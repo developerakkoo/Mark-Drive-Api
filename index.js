@@ -7,9 +7,10 @@ const compression = require('compression');
 const app = express();
 app.use(compression());
 
-const {FileRoutes} = require('./routes/fileName.route');
+const {FileRoutes,userRoutes} = require('./routes/index')
 app.use(express.json());
 app.use(bodyParser.json());
+app.use(userRoutes);
 app.use(FileRoutes);
 
 app.use( express.static('public'));
@@ -54,6 +55,6 @@ db.once("open", () => {console.log("Connected to mongoDB ")
 
 
 
-app.listen(8000,console.log('...........🚀'));
+app.listen(8000,console.log('8000..........🚀'));
 
 

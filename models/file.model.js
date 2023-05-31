@@ -1,14 +1,27 @@
 const mongoose = require('mongoose');
 const fileSchema = new mongoose.Schema({
-    name: {
+    UserId: {
+        type:mongoose.Types.ObjectId,
+        ref:'User',
+        require:true
+    },
+    Title: {
         type: String,
         required: true
     },
-    File: {
+    subTitle: {
         type: String,
         required: true
     },
-    ComFile: {
+    description: {
+        type: String,
+        required: true
+    },
+    keyWords: {
+        type: Array,
+        required: true
+    },
+    Link: {
         type: String,
         required: true
     },
