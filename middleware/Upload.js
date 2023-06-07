@@ -1,6 +1,5 @@
 const path = require('path');
 const multer = require('multer');
-const sharp = require('sharp');
 const fs = require('fs')
 let upload = (folderName) => {
     return imageUpload = multer({
@@ -8,7 +7,7 @@ let upload = (folderName) => {
         destination: function (req, file, cb) {
         // console.log(req.query);
         const path = `public/${req.query.FileName || "New-folder"}`;
-        fs.mkdirSync(path, { recursive: true })
+        fs.mkdirSync(path, { recursive: false })
         cb(null, path);
     },
 

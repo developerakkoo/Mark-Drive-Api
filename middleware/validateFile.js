@@ -3,14 +3,13 @@ require('dotenv').config();
 
 exports.validateFileUpload = async (req,res,next) => {
     const FileObj = {
-        UserId:decoded.UserId,
+        UserId:req.body.Id,
         Title:req.body.Title,
         subTitle:req.body.subTitle,
         description:req.body.description,
         keyWords:req.body.keyWords,
         File: req.file
     }
-    console.log(FileObj)
     if(!FileObj.UserId){
         return res.status(400).json({message:`UserId is require `});
     }

@@ -10,6 +10,7 @@ exports.verifyToken = (req, res, next) => {
             message: "No token provided!"
         })
     }
+    
     jwt.verify(token, process.env.SECRET_KEY,
         (err, decoded) => {
             if (err) {
@@ -17,9 +18,12 @@ exports.verifyToken = (req, res, next) => {
                     message: "Unauthorized!"
                 })
             }
-            req.body.Id = decoded.userId
-            console.log(decoded)
+            req.userId  = decoded.userId;
             next()
         })
-
 }
+
+
+
+
+//geo based loaction  based
