@@ -25,7 +25,15 @@ const fileSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-});
+    password:{
+        type:String,
+    },
+    downloadCount:{
+        type:String,
+        require:true,
+        default:0
+    }
+}, {timestamps: true});
 
 
 module.exports = mongoose.model("File", fileSchema)

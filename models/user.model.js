@@ -6,7 +6,7 @@ const UserSchema = new mongoose.Schema({
 
     password: {type: String,required: true},
 
-    Pin: {type: String,required: true},
+    Pin: {type: String},
 
     storageUsage: { type: Number, default: 0 },
 });

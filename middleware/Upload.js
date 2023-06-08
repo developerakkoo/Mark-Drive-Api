@@ -1,4 +1,5 @@
 const path = require('path');
+const moment = require ('moment');
 const multer = require('multer');
 const fs = require('fs')
 let upload = (folderName) => {
@@ -6,8 +7,8 @@ let upload = (folderName) => {
     storage: multer.diskStorage({
         destination: function (req, file, cb) {
         // console.log(req.query);
-        const path = `public/${req.query.FileName || "New-folder"}`;
-        fs.mkdirSync(path, { recursive: false })
+        const path = `public/${req.query.FileName ||`New-folder`}/${moment().format('MMMMDoYYYYh-mm-ss-a')}`;
+        fs.mkdirSync(path, { recursive: true })
         cb(null, path);
     },
 
