@@ -1,4 +1,4 @@
-const {FileRoutes} = require('./fileName.route');
+const {FileRoutes} = require('./file.route');
 const {userRoutes} = require('./user.route');
 
 module.exports = {

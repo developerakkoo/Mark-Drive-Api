@@ -1,6 +1,8 @@
 const User = require('../models/user.model');
+const mainDir = require('../models/mainDir.model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const fs = require('fs');
 require('dotenv').config();
 
 
@@ -20,7 +22,23 @@ try {    const userData = {
         email: createdUser.email,
         
     }
-    res.status(201).json({message:`User created Successfully`,postRes})
+    const folderPath = `public/${createdUser.name}`;
+
+        if (!fs.existsSync(folderPath)) {
+        fs.mkdir(folderPath,(err) =>{
+            if(err){
+                console.log(err);
+            }
+            console.log("mainDir created successfully");
+        });
+        }
+        const dirObj ={
+            mainDirName:createdUser.name,
+            UserId :createdUser._id,
+            path:req.protocol +"://"+req.hostname +"/"+folderPath.replace(/\\/g, "/")
+        }
+    const createdDir = await mainDir.create(dirObj);
+    res.status(201).json({message:`User created Successfully`,User:postRes,mainDir:createdDir})
     }catch(error){
         res.status(500).json({status:'ERROR',message:error.message})
     }
@@ -100,6 +118,7 @@ exports.fastAccessLoginUser = async (req,res) => {
         }
         res.status(202).json({message:`User login successfully`,postRes});
     }catch(error){
+        console.log(error);
         res.status(500).json({status:'ERROR',Message:error.message});
     }
 }

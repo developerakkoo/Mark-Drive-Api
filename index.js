@@ -3,13 +3,13 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
 const multer = require('multer');
-const compression = require('compression');
 const app = express();
-app.use(compression());
-
-const {FileRoutes,userRoutes} = require('./routes/index')
 app.use(express.json());
 app.use(bodyParser.json());
+app.set('view engine', 'ejs');
+// const HandelSharing = require('./controller/Drive');
+
+const {FileRoutes,userRoutes} = require('./routes/index');
 app.use(userRoutes);
 app.use(FileRoutes);
 
@@ -30,13 +30,13 @@ try {
 }
 });
 
-
+// app.route('/ShareLink/:id').get(HandelSharing.handelFileSharing).post(HandelSharing.handelFileSharing)
 
 
 
 
 app.get('/',(req,res)=>{
-    res.status(200).send('<style> h1 { text-align: center;} </style><h1>Hello</h1>');
+    res.status(404).send('<style> h1 { text-align: center;} </style> <h1>Welcome To Mark-Drive </h1>')
 })
 app.use((req,res)=>{
     res.status(404).send('<style> h1 { text-align: center;} </style> <h1>404 Page Not Found.!</h1>')

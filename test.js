@@ -33,22 +33,26 @@ const fs = require('fs');
 // fs.writeFile(`C:\Users\sakib\OneDrive\Desktop\Drive_API/Log-${savedUser._id}.log`,msg,error =>{ 
 //     console.log('Error writing to backup log file', error); 
 // });
+/*   
+     const remainingQuota =   1024 * 1024 * 1024 - savedUser.storageUsage;531287817
+    console.log(req.file.size);
+    console.log("msl",maxStorageLimit)
+*/
 
+// const path = require('path');
 
-const path = require('path');
+// // Function to create or append to a log file
+// const message = "File Backup001"
+// function logToFile(message) {
+//     const logPath = path.join(__dirname, 'app1.log');
+//     const logMessage = `${`Log-${2000}`} - ${message}\n`;
 
-// Function to create or append to a log file
-const message = "File Backup001"
-function logToFile(message) {
-    const logPath = path.join(__dirname, 'app1.log');
-    const logMessage = `${`Log-${2000}`} - ${message}\n`;
+//     fs.appendFile(logPath, logMessage, (error) => {
+//     if (error) {
+//     console.error('Error writing to log file', error);
+//     }
+//     });
+// }
 
-    fs.appendFile(logPath, logMessage, (error) => {
-    if (error) {
-    console.error('Error writing to log file', error);
-    }
-    });
-}
-
-// Example usage
-logToFile(message);
+// // Example usage
+// logToFile(message);

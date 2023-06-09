@@ -25,6 +25,15 @@ const fileSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    markAsFavorite: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
+    ShareableLink: {
+        type: String,
+        
+    },
     password:{
         type:String,
     },
@@ -36,4 +45,4 @@ const fileSchema = new mongoose.Schema({
 }, {timestamps: true});
 
 
-module.exports = mongoose.model("File", fileSchema)
+module.exports = mongoose.model("File", fileSchema);
